@@ -132,6 +132,26 @@
 	background-color: #242424;
 } */
 
+.box-nav {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content:flex-start
+}
+
+.box-nav-option {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+
+  margin: 10px 10px 0px 0px;
+  min-width: 150px;
+  padding: 5px;
+
+  background-color: var(--scheme-color-sec);
+  color: var(--scheme-color-text);
+  box-shadow: 0px 0px 1px black;
+}
+
 .btn-group {
   display: flex;
   flex-flow: row nowrap;

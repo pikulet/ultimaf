@@ -33,7 +33,7 @@ import CreateAcrotopiaSetup from "./CreateSetup/CreateAcrotopiaSetup";
 import HostSecretHitler from "./Host/HostSecretHitler";
 import CreateSecretHitlerSetup from "./CreateSetup/CreateSecretHitlerSetup";
 
-import { SubNav } from "../../components/Nav";
+import { BoxNav, SubNav } from "../../components/Nav";
 import { GameTypes } from "../../Constants";
 import { UserContext } from "../../Contexts";
 
@@ -102,6 +102,13 @@ export default function Play(props) {
         onFilter={onFilterGameType}
         filterIcon={<i className="fas fa-gamepad" />}
       />
+      {!inLobby && 
+        <BoxNav 
+          value={gameType}
+          options={GameTypes}
+          onChange={onFilterGameType}
+        />
+      }
       <div className="inner-content play">
         <Switch>
           <Route exact path="/play" render={() => <Join />} />

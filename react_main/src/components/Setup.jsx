@@ -4,10 +4,11 @@ import { GameContext, PopoverContext, UserContext } from "../Contexts";
 import { RoleCount } from "./Roles";
 import { Alignments } from "../Constants";
 import { filterProfanity } from "./Basic";
-import { hyphenDelimit } from "../utils";
+import { GameIcon } from "./GameNav";
 
 import "../css/setup.css";
 import "../css/roles.css";
+import "../css/gameNav.css"
 
 export default function Setup(props) {
   const user = useContext(UserContext);
@@ -135,13 +136,6 @@ export function SmallRoleList(props) {
     <div className="small-role-list">
       {props.title} {roles}
     </div>
-  );
-}
-
-export function GameIcon(props) {
-  const gameType = hyphenDelimit(props.gameType);
-  return (
-    <div onClick={props.onClick} className={`game-icon ${gameType}`}></div>
   );
 }
 

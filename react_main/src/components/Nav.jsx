@@ -39,6 +39,30 @@ export function SubNav(props) {
   );
 }
 
+export function BoxNav(props) {
+  function onBoxNavItemClick(option) {
+    props.onChange(option);
+  }
+
+  const menuItems = props.options.map((option) => {
+    const selected = option == props.value ? "selected-box-nav" : "";
+
+    return (
+      <div className={`box-nav-option ${selected}`}
+        key={option}
+        onClick={() => onBoxNavItemClick(option)}>
+          {option}
+      </div>
+    )
+  })
+
+  return <>
+    <div className="box-nav">
+      {menuItems}
+    </div>
+  </>
+}
+
 export function PageNav(props) {
   const page = props.page;
   const maxPage = props.maxPage;
