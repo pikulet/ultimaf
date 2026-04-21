@@ -18,6 +18,10 @@ module.exports = class PaintPortraits extends Card {
         run: function () {
           if (!this.actor.alive) return;
 
+          if (!this.actor.data.portraits) {
+            this.actor.data.portraits = [];
+          }
+
           let visitors = this.getVisitors(this.actor);
           for (let visitor of visitors) {
             this.actor.data.portraits.push(visitor);
@@ -36,7 +40,7 @@ module.exports = class PaintPortraits extends Card {
       },
       death: function (player, killer, deathType) {
         if (player === this.player) {
-          let portraits = this.player.data.portraits;
+          let portraits = this.player.data.portraits || [];
           function unique(arr) {
             const result = [];
 
