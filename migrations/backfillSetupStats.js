@@ -30,41 +30,7 @@ require("dotenv").config();
 const mongoose = require("mongoose");
 const mongo = require("mongodb");
 const models = require("../db/models");
-let logger;
-try {
-  logger = require("../modules/logging")("backfillSetupStats");
-} catch (e) {
-  const reason =
-    e && (e.code === "EACCES" || e.code === "EPERM" || e.code === "ENOENT");
-  if (reason) {
-    const toText = (msg, args) =>
-      [msg, ...args]
-        .map((v) => {
-          if (v instanceof Error) return v.stack || v.message;
-          if (typeof v === "string") return v;
-          try {
-            return JSON.stringify(v);
-          } catch {
-            return String(v);
-          }
-        })
-        .join(" ");
-
-    // Keep migration runnable in restricted environments where logs dir cannot be created.
-    logger = {
-      info: (msg, ...args) => console.log(toText(msg, args)),
-      warn: (msg, ...args) => console.warn(toText(msg, args)),
-      error: (msg, ...args) => console.error(toText(msg, args)),
-      http: (msg, ...args) => console.log(toText(msg, args)),
-    };
-    logger.warn(
-      "File logging unavailable; using console logger fallback.",
-      e.message || e
-    );
-  } else {
-    throw e;
-  }
-}
+const logger = require("../modules/logging")("backfillSetupStats");
 
 const ObjectID = mongo.ObjectID;
 
@@ -341,7 +307,7 @@ async function main() {
         );
       }
     } catch (e) {
-      logger.error(`SetupVersion ${sv._id}:`, e);
+      logger.error(`SetupVersion ${sv._id}: ${e.stack || e.message || e}`);
     }
   }
 
