@@ -142,6 +142,7 @@ const TERMINOLOGY_ABBREVS = [
   [/\bML\b/gi, "MC"],
   [/\bNL\b/gi, "NC"],
   [/\bRL\b/gi, "RC"],
+  [/\bKL\b/gi, "KC"],
 ];
 
 function filterLWordAbbrevs(segment) {

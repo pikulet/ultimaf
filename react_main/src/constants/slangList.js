@@ -6,11 +6,6 @@ export const slangList = {
       "Kick-condemn. condemning a player which has not voted yet (in order to maintain the game ranked).",
     emoji: "🦶",
   },
-  kl: {
-    definition:
-      "Kick-lynch. Voting off an AFK or vegging player to prevent the game from going unranked, usually when town still has a good chance of winning. Older term for kc (kick-condemn).",
-    emoji: "🦶",
-  },
   afk: {
     definition:
       "Away From Keyboard: when a player stop taking part in a discussion in a chat room for a short time. This can be scummy sometimes.",
